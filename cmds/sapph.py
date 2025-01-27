@@ -2,7 +2,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-SAPPH = "<:checkmarksapph:1331759535114817566>"
+SAPPH = "<:checkmarksapph:1332467645487906876>"
 
 class Sapphire(commands.Cog):
     """ Different commands that use a sapphire-like embed """

@@ -5,7 +5,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-LOADING3 = "<a:loading3:1331757666883735603>"
+LOADING3 = "<a:loading3:1332467109371973797>"
 
 class Util(commands.Cog):
     """ Some weird commands that have a use but also don't. """
