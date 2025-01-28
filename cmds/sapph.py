@@ -8,12 +8,15 @@ class Sapphire(commands.Cog):
     """ Different commands that use a sapphire-like embed """
 
     def sapph_embed(self, who: discord.Member, action: str, reason: str,duration: str='Permanent'):
-         """ Create an embed similar to the one made by sapphire and return it. """
+        """ Create an embed similar to the one made by sapphire and return it. """
 
-         embed = discord.Embed()
-         embed.add_field(name=f"{SAPPH} @{who.name} {action}", value=f"\n> **Reason**: {reason}\n> **Duration**: {duration}", inline=False)
-         embed.color = discord.Colour.from_rgb(54, 206, 54)
-         return embed
+        embed = discord.Embed()
+        # quick and dirty way of cleaning the string but it works sooo :troll:
+        embed.add_field(name=f"{SAPPH} @{who.name} {action}"[:256], value=f"\n> **Reason**: {reason}\n> **Duration**: {duration}"[:1024], inline=False)
+        embed.set_footer(text="le epically trolled")
+        embed.color = discord.Colour.from_rgb(54, 206, 54)
+
+        return embed
 
     def __init__(self,client: commands.Bot):
         self.client = client

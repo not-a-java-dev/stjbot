@@ -25,7 +25,11 @@ class Util(commands.Cog):
             Username of the GD account
         """
 
-        await interaction.response.send_message(content=f"-# {username}'s stats\n{LOADING3}`Pulling from the gdbrowser servers...`{LOADING3}")
+        if len(username) > 20:
+            await interaction.response.send_message("Username is too long")
+            return
+
+        await interaction.response.send_message(f"-# {username}'s stats\n{LOADING3}`Pulling from the gdbrowser servers...`{LOADING3}")
 
         try:
             stats = json.loads(requests.get("http://gdbrowser.com/api/profile/" + username).text)
@@ -49,7 +53,7 @@ class Util(commands.Cog):
         """
 
         output = message.lower().replace("l","w").replace("r", "w").replace("the","da").replace ("i ", "i-i-i ").replace("!","!!").replace(".",".!").replace("?","?!")+" "+random.choice([":3","nyyaaa :333","rawr :3"," ~"])
-        await interaction.response.send_message(output)
+        await interaction.response.send_message(output[:2000])
 
     @app_commands.command()
     @app_commands.allowed_installs(guilds=True, users=True)
@@ -63,6 +67,8 @@ class Util(commands.Cog):
             contents of the message
         """
 
+        # so that discord doesnt 400 us when trying to send a longer message than 200 chars
+        message = message[:2000]
         await interaction.response.send_message(message)
 
 

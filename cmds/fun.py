@@ -59,6 +59,7 @@ class Fun(commands.Cog):
             does it contain dragons?
         """
 
+        link = link[:2000]
         rating = "I like :3. Has dergs in it :3" if containsdragons else "Bad. No dergs. 3:"
         doesithave = "Contains dragons :3" if containsdragons else "Doesn't contain dragons."
 
