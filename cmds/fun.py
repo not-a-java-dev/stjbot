@@ -113,5 +113,17 @@ class Fun(commands.Cog):
 
         await interaction.response.send_message(f"-# OFFICIAL fooycord checker\n-# Result for <@{user.id}>:\n{uses}\n{result}")
 
+    @app_commands.command()
+    @app_commands.allowed_installs(guilds=True, users=True)
+    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
+    async def bubblewrap(self, interaction: discord.Interaction):
+        """ Pop the bubbles :3 """
+        bubble = "|| o ||" * 8
+        bubble += "\n"
+
+        bubble_wrap = "Bubble wrap!\n" + bubble * 6
+
+        await interaction.response.send_message(bubble_wrap);
+
 async def setup(client):
     await client.add_cog(Fun(client))
