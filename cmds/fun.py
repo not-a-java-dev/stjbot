@@ -32,6 +32,7 @@ class Fun(commands.Cog):
         nick = "None"
         if isinstance(interaction.user,discord.Member):
             nick = interaction.user.nick
+
         await interaction.response.send_message(f"-# {interaction.user.name}({nick})\nyou are {random.randint(0,100)}% cool.")
 
 
@@ -73,6 +74,7 @@ class Fun(commands.Cog):
         nick = "None" # Make similar behaviour to TJBot
         if isinstance(interaction.user,discord.Member):
             nick = interaction.user.nick
+
         await interaction.response.send_message(f"-# {interaction.user.name}({nick})\n-# Random dragon:\n{random.choice(self.dragon_pics)}")
 
 
@@ -118,6 +120,7 @@ class Fun(commands.Cog):
     @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def bubblewrap(self, interaction: discord.Interaction):
         """ Pop the bubbles :3 """
+
         bubble = "|| o ||" * 8
         bubble += "\n"
 

@@ -31,6 +31,7 @@ class Sapphire(commands.Cog):
         reason: str
             reason
         """
+
         embed = self.sapph_embed(killee, "killed", reason)
         await interaction.response.send_message(embed=embed)
 
@@ -51,6 +52,7 @@ class Sapphire(commands.Cog):
         duration: str
             duration
         """
+
         embed = self.sapph_embed(actionee, action, reason, duration)
         await interaction.response.send_message(embed=embed)
 
@@ -67,6 +69,7 @@ class Sapphire(commands.Cog):
         reason: str
             reason
         """
+
         embed = self.sapph_embed(hugee, "hugged", reason, "mrowww :3")
         embed.set_footer(text="prrrr :3")
         await interaction.response.send_message(embed=embed)
@@ -84,6 +87,7 @@ class Sapphire(commands.Cog):
         reason: str
             reason
         """
+
         embed = self.sapph_embed(explodee, "exploded", reason)
         await interaction.response.send_message(embed=embed)
 

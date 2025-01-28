@@ -2,6 +2,7 @@ from discord.ext import commands
 
 class TCommands(commands.Cog):
     """ Some text-based commands and funsies """
+
     def __init__(self, bot):
         self.client = bot
     
@@ -14,20 +15,23 @@ class TCommands(commands.Cog):
             return
 
         # no real use, stays here because cool
-        if message.content == "t!!a":
-            await message.channel.send(f"Total: {self.client.index} | Minutes: {round(self.client.seconds/60,3)} | Result: {round((self.client.index*60)/self.client.seconds,3)}")
+        if message.content == "st!a":
+            minutes = round(self.client.seconds/60,3)
+            result = round((self.client.index*60)/self.client.seconds,3)
+
+            await message.channel.send(f"Total: {self.client.index} | Minutes: {minutes} | Result: {result}")
             return
 
         is_owner = await self.client.is_owner(message.author)
         # sync the commands
-        if message.content == "t!!sync" and is_owner:
+        if message.content == "st!sync" and is_owner:
             self.client.logger.info("sync ran")
             await self.client.tree.sync()
             await message.channel.send("synced.")
             return
 
         # reload cogs
-        if message.content == "t!!creload" and is_owner:
+        if message.content == "st!creload" and is_owner:
             self.client.logger.info("creload ran")
             for cog in self.client.cmds_cogs:
                 await self.client.reload_extension(f"cmds.{cog}")

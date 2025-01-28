@@ -24,6 +24,7 @@ class Util(commands.Cog):
         username: str
             Username of the GD account
         """
+
         await interaction.response.send_message(content=f"-# {username}'s stats\n{LOADING3}`Pulling from the gdbrowser servers...`{LOADING3}")
 
         try:
@@ -46,6 +47,7 @@ class Util(commands.Cog):
         message: str
             contents of the message
         """
+
         output = message.lower().replace("l","w").replace("r", "w").replace("the","da").replace ("i ", "i-i-i ").replace("!","!!").replace(".",".!").replace("?","?!")+" "+random.choice([":3","nyyaaa :333","rawr :3"," ~"])
         await interaction.response.send_message(output)
 
@@ -60,6 +62,7 @@ class Util(commands.Cog):
         message: str
             contents of the message
         """
+
         await interaction.response.send_message(message)
 
 
