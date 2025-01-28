@@ -4,12 +4,12 @@ import discord
 from discord.ext.commands import Bot
 from discord.ext import tasks
 
-
 class TJBot(Bot):
 
     def __init__(self,intents: discord.Intents):
+
         # random string so that the bot doesnt acknowledge normal messages
-        super().__init__(command_prefix='<1Nj2>kz4H1@d83Wd<', intents=intents)
+        super().__init__(command_prefix='<1Nj2>kz4H1@d83Wd<', intents=intents, activity=discord.CustomActivity(name='stupid horse'))
 
         self.logger = logging.getLogger('discord')
 
@@ -25,7 +25,6 @@ class TJBot(Bot):
 
     async def on_ready(self):
         client.logger.info("Ready.")
-        await client.change_presence(activity=discord.CustomActivity(name='stupid horse' ,emoji='❤️'))
 
         for cog in client.cmds_cogs:
             client.logger.debug(f"cmds.{cog} loaded")
@@ -37,6 +36,12 @@ class TJBot(Bot):
 
 
 if __name__ == "__main__":
+    TOKEN = os.environ.get('TOKEN')
+
+    if not TOKEN:
+        print("no TOKEN environment variable found!\nPlease set one <3")
+        exit(1)
+
     intents = discord.Intents.all()
     client = TJBot(intents=intents)
 
@@ -51,11 +56,5 @@ if __name__ == "__main__":
     print(intro.read())
     intro.close()
 
-    TOKEN = os.environ.get('TOKEN')
-
-    if (TOKEN):
-        client.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
-    else:
-        print("no TOKEN environment variable found!\nPlease set one <3")
-        exit(1)
+    client.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
 
