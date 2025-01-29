@@ -9,7 +9,7 @@ class TJBot(Bot):
     def __init__(self,intents: discord.Intents):
 
         # random string so that the bot doesnt acknowledge normal messages
-        super().__init__(command_prefix='<1Nj2>kz4H1@d83Wd<', intents=intents, activity=discord.CustomActivity(name='stupid horse'), help_command=None)
+        super().__init__(command_prefix='st!', intents=intents, activity=discord.CustomActivity(name='stupid horse'), help_command=None)
 
         self.logger = logging.getLogger('discord')
 

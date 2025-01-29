@@ -11,17 +11,22 @@ class Fun(commands.Cog):
 
         self.dragon_pics = open("cmds/dragons.txt").read().splitlines()
 
+    def nick_parse(self, user: discord.User | discord.Member):
+        """ Parse a discord user and if it's a member return the nickname in parenthesis if not, return an empty string"""
+
+        nick = f"({user.nick})" if isinstance(user, discord.Member) and user.nick != None else ""
+
+        return nick
+
     @app_commands.command()
     @app_commands.allowed_installs(guilds=True, users=True)
     @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def furry(self, interaction: discord.Interaction):
         """ Calculates how much of a furry you are! :3 """
 
-        nick = "None"
-        if isinstance(interaction.user,discord.Member):
-            nick = interaction.user.nick
-        
-        await interaction.response.send_message(f"-# {interaction.user.name}({nick})\nyou are {random.randint(0,100)}% a furry.")
+        nick = self.nick_parse(interaction.user)
+
+        await interaction.response.send_message(f"-# {interaction.user.name}{nick}\nyou are {random.randint(0,100)}% a furry.")
 
 
     @app_commands.command()
@@ -30,11 +35,9 @@ class Fun(commands.Cog):
     async def cool(self, interaction: discord.Interaction):
         """ Calculates how cool you are! :3 """
 
-        nick = "None"
-        if isinstance(interaction.user,discord.Member):
-            nick = interaction.user.nick
+        nick = self.nick_parse(interaction.user)
 
-        await interaction.response.send_message(f"-# {interaction.user.name}({nick})\nyou are {random.randint(0,100)}% cool.")
+        await interaction.response.send_message(f"-# {interaction.user.name}{nick}\nyou are {random.randint(0,100)}% cool.")
 
 
     @app_commands.command()
@@ -73,11 +76,9 @@ class Fun(commands.Cog):
     async def dragon(self, interaction: discord.Interaction):
         """ Sends a pretty dragon picture :3 """
 
-        nick = "None" # Make similar behaviour to TJBot
-        if isinstance(interaction.user,discord.Member):
-            nick = interaction.user.nick
+        nick = self.nick_parse(interaction.user)
 
-        await interaction.response.send_message(f"-# {interaction.user.name}({nick})\n-# Random dragon:\n{random.choice(self.dragon_pics)}")
+        await interaction.response.send_message(f"-# {interaction.user.name}{nick}\n-# Random dragon:\n{random.choice(self.dragon_pics)}")
 
 
     @app_commands.command()
