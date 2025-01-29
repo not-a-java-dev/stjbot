@@ -122,12 +122,10 @@ class Fun(commands.Cog):
     async def bubblewrap(self, interaction: discord.Interaction):
         """ Pop the bubbles :3 """
 
-        bubble = "|| o ||" * 8
-        bubble += "\n"
+        # uhh.. at least it's better than tjc's bot source code right? .. right???
+        bubble = "\n" + ( ( "||  o  ||" * 8 ) + "\n" ) * 8
 
-        bubble_wrap = "Bubble wrap!\n" + bubble * 6
-
-        await interaction.response.send_message(bubble_wrap);
+        await interaction.response.send_message(f"Bubble wrap! {bubble}");
 
 async def setup(client):
     await client.add_cog(Fun(client))
