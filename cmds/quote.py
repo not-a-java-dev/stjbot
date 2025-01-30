@@ -7,7 +7,7 @@ from discord.ext import commands
 LOADING3 = "<a:loading3:1332467109371973797>"
 
 class Quotes(commands.Cog):
-    """ Quote winter's messages (hard-coded) """
+    """ Quote tjc's messages (hard-coded) """
 
     def __init__(self,client: commands.Bot):
         self.client = client
@@ -15,7 +15,7 @@ class Quotes(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
-        if message.author.id != 978053871270248508:
+        if message.author.id != 1045761412489809975:
             return
 
         nick = ""
@@ -25,10 +25,8 @@ class Quotes(commands.Cog):
         message_content = base64.b64encode(message.content.encode())
         message_parsed = f"{message.author.name}~{nick}~{message_content.decode()}"
 
-        print(f"logged winter's message as {message_parsed}")
-        with open("w_mesg.txt", "a") as w_mesg:
+        with open("t_mesg.txt", "a") as w_mesg:
             w_mesg.write(f"{message_parsed}\n")
-            pass
 
     @app_commands.command()
     @app_commands.allowed_installs(guilds=True, users=True)
@@ -37,10 +35,14 @@ class Quotes(commands.Cog):
         """ Sends a random quote :3 """
 
         nick = f"({interaction.user.nick})" if isinstance(interaction.user, discord.Member) and interaction.user.nick != None else ""
-        await interaction.response.send_message(f"-# {interaction.user.name}{nick}\n-# Random quote:\n{LOADING3}`Please wait... Searching logs...`")
+        await interaction.response.send_message(f"-# {interaction.user.name}{nick}\n-# Random quote:\n{LOADING3} `Please wait... Searching logs...`")
 
-        with open("w_mesg.txt", "r") as logs:
-            message = random.choice(logs.read().splitlines())
+        with open("t_mesg.txt", "r") as logs:
+            try:
+                message = random.choice(logs.read().splitlines())
+            except:
+                await interaction.edit_original_response(content="Error! No logged messages maybe?")
+                return
 
             username, nickname_b64, message_b64 = message.split("~")
 
