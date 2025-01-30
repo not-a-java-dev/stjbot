@@ -9,10 +9,11 @@ class Fun(commands.Cog):
     def __init__(self,client: commands.Bot):
         self.client = client
 
-        self.dragon_pics = open("cmds/dragons.txt").read().splitlines()
+        with open("cmds/dragons.txt") as dragons_txt:
+            self.dragon_pics = dragons_txt.read().splitlines()
 
     def nick_parse(self, user: discord.User | discord.Member):
-        """ Parse a discord user and if it's a member return the nickname in parenthesis if not, return an empty string"""
+        """ Parse a discord user and if it's a member return the nickname in parenthesis if not, return an empty string """
 
         nick = f"({user.nick})" if isinstance(user, discord.Member) and user.nick != None else ""
 

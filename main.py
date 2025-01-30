@@ -18,7 +18,7 @@ class TJBot(Bot):
         # seconds since the setup hook starts
         self.seconds = 0
 
-        self.cmds_cogs = ["tcommands","util", "sapph", "fun"]
+        self.cmds_cogs = ["tcommands","util", "sapph", "fun", "quote"]
 
     async def setup_hook(self):
         self.m_activity.start()
