@@ -47,14 +47,12 @@ class Quotes(commands.Cog):
             nickname_decoded = base64.b64decode(nickname_b64.encode()).decode()
             message_decoded = base64.b64decode(message_b64.encode()).decode()
 
+            if nickname_decoded != "":
+                nickname_decoded = f"({nickname_decoded})"
 
-            parsed_quote = f"-# Quote from {username}({nickname_decoded})\n{message_decoded}"
-
+            parsed_quote = f"-# Quote from {username}{nickname_decoded}\n{message_decoded}"
 
             await interaction.edit_original_response(content=parsed_quote)
-
-
-        # await interaction.edit_original_response(content=f"-# {username}'s stats\n{output}")
 
 async def setup(client):
     await client.add_cog(Quotes(client))
