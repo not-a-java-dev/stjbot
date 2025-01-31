@@ -22,8 +22,6 @@ class Sapphire(commands.Cog):
         self.client = client
 
     @app_commands.command()
-    @app_commands.allowed_installs(guilds=True, users=True)
-    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def kill(self, interaction: discord.Interaction, killee: discord.Member, reason: str='No reason provided'):
         """ Kill someone :3
         
@@ -39,8 +37,6 @@ class Sapphire(commands.Cog):
         await interaction.response.send_message(embed=embed)
 
     @app_commands.command()
-    @app_commands.allowed_installs(guilds=True, users=True)
-    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def customaction(self, interaction: discord.Interaction, actionee: discord.Member, action: str, reason: str='No reason provided', duration: str='Permanent'):
         """ Whatever you want someone :3
         
@@ -60,8 +56,6 @@ class Sapphire(commands.Cog):
         await interaction.response.send_message(embed=embed)
 
     @app_commands.command()
-    @app_commands.allowed_installs(guilds=True, users=True)
-    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def hug(self, interaction: discord.Interaction, hugee: discord.Member, reason: str='No reason provided'):
         """ Hug someone :3
         
@@ -78,8 +72,6 @@ class Sapphire(commands.Cog):
         await interaction.response.send_message(embed=embed)
 
     @app_commands.command()
-    @app_commands.allowed_installs(guilds=True, users=True)
-    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def explode(self, interaction: discord.Interaction, explodee: discord.Member, reason: str='No reason provided'):
         """ Explode someone :3
         

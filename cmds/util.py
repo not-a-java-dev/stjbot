@@ -14,8 +14,6 @@ class Util(commands.Cog):
         self.client = client
 
     @app_commands.command()
-    @app_commands.allowed_installs(guilds=True, users=True)
-    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def stats(self, interaction: discord.Interaction, username: str):
         """ Gets Account statistics of a Geometry Dash account :3
         
@@ -41,8 +39,6 @@ class Util(commands.Cog):
 
 
     @app_commands.command()
-    @app_commands.allowed_installs(guilds=True, users=True)
-    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def uwu(self, interaction: discord.Interaction, message: str):
         """ Uwuwifies a message :3
         
@@ -56,8 +52,6 @@ class Util(commands.Cog):
         await interaction.response.send_message(output[:2000])
 
     @app_commands.command()
-    @app_commands.allowed_installs(guilds=True, users=True)
-    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def say(self, interaction: discord.Interaction, message: str):
         """ Sends a message :3
         

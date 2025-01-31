@@ -20,8 +20,6 @@ class Fun(commands.Cog):
         return nick
 
     @app_commands.command()
-    @app_commands.allowed_installs(guilds=True, users=True)
-    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def furry(self, interaction: discord.Interaction):
         """ Calculates how much of a furry you are! :3 """
 
@@ -31,8 +29,6 @@ class Fun(commands.Cog):
 
 
     @app_commands.command()
-    @app_commands.allowed_installs(guilds=True, users=True)
-    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def cool(self, interaction: discord.Interaction):
         """ Calculates how cool you are! :3 """
 
@@ -42,8 +38,6 @@ class Fun(commands.Cog):
 
 
     @app_commands.command()
-    @app_commands.allowed_installs(guilds=True, users=True)
-    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def liedetector(self, interaction: discord.Interaction):
         """ Detects if someone is lying! :3 """
 
@@ -51,8 +45,6 @@ class Fun(commands.Cog):
 
 
     @app_commands.command()
-    @app_commands.allowed_installs(guilds=True, users=True)
-    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def ratemedia(self, interaction: discord.Interaction, link: str, containsdragons: bool):
         """ Rates a media! :3
 
@@ -72,8 +64,6 @@ class Fun(commands.Cog):
 
 
     @app_commands.command()
-    @app_commands.allowed_installs(guilds=True, users=True)
-    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def dragon(self, interaction: discord.Interaction):
         """ Sends a pretty dragon picture :3 """
 
@@ -83,8 +73,6 @@ class Fun(commands.Cog):
 
 
     @app_commands.command()
-    @app_commands.allowed_installs(guilds=True, users=True)
-    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def fooycord(self, interaction: discord.Interaction, user: discord.Member):
         """ Checks if someone uses fooycord :3
 
@@ -120,8 +108,6 @@ class Fun(commands.Cog):
         await interaction.response.send_message(f"-# OFFICIAL fooycord checker\n-# Result for <@{user.id}>:\n{uses}\n{result}")
 
     @app_commands.command()
-    @app_commands.allowed_installs(guilds=True, users=True)
-    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def bubblewrap(self, interaction: discord.Interaction):
         """ Pop the bubbles :3 """
 

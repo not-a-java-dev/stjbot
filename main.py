@@ -2,14 +2,21 @@ import logging
 import os
 import discord
 from discord.ext.commands import Bot
+from discord import app_commands
 from discord.ext import tasks
 
 class TJBot(Bot):
 
     def __init__(self,intents: discord.Intents):
 
-        # random string so that the bot doesnt acknowledge normal messages
-        super().__init__(command_prefix='st!', intents=intents, activity=discord.CustomActivity(name='stupid horse'), help_command=None)
+        super().__init__(
+            command_prefix='st!',
+            intents=intents,
+            activity=discord.CustomActivity(name='stupid horse'),
+            allowed_contexts=app_commands.AppCommandContext(guild=True, dm_channel=True, private_channel=True),
+            allowed_installs=app_commands.AppInstallationType(guild=True, user=True),
+            help_command=None
+        )
 
         self.logger = logging.getLogger('discord')
 
