@@ -12,7 +12,13 @@ class Dev(commands.Cog):
 
     @app_commands.command()
     async def eval(self, interaction: discord.Interaction, prompt: str):
-        """ Evaluate some code (OWNER ONLY) """
+        """ Evaluate some python code (OWNER ONLY)
+
+        Parameters
+        ----------
+        prompt: str
+            code to evaluate
+        """
 
         is_owner = await self.client.is_owner(interaction.user)
 
@@ -28,7 +34,7 @@ class Dev(commands.Cog):
         try:
             result = eval(prompt)
         except:
-            await interaction.response.send_message("https://www.w3schools.com/python/default.asp")
+            await interaction.response.send_message("what if you read https://www.w3schools.com/python/default.asp")
             return
 
         await interaction.response.send_message(f"```{result}```")
@@ -43,7 +49,7 @@ class Dev(commands.Cog):
             prompt
         """
 
-        if await self.client.is_owner(interaction.user):
+        if not await self.client.is_owner(interaction.user):
             await interaction.response.send_message("bonk")
             return
 
@@ -52,7 +58,7 @@ class Dev(commands.Cog):
                 await interaction.response.send_message(file=discord.File(log))
             return
 
-        if prompt == "cogs": await interaction.response.send_message(', '.join(self.client.cogs))
+        if prompt == "cogs": await interaction.response.send_message('Following cogs are loaded:\n' + ', '.join(self.client.cogs))
         
         try:
             command, value = prompt.split("=", 1)
@@ -73,7 +79,7 @@ class Dev(commands.Cog):
 
                     if value not in message:
                         continue
-                    if hits > 10:
+                    if hits > 9:
                         break
 
                     hits += 1

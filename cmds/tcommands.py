@@ -26,11 +26,15 @@ class TCommands(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def creload(self, ctx, cog_def: str | None):
+    async def creload(self, ctx, cog_def: str | None, new: bool | None):
         if cog_def:
             self.client.logger.info(f"creload ran with a cog ({cog_def}) defined.")
-            await self.client.reload_extension(f"cmds.{cog_def}")
+            if new:
+                await self.client.load_extension(f"cmds.{cog_def}")
+            else:
+                await self.client.reload_extension(f"cmds.{cog_def}")
             await ctx.send("specified cog reloaded, hopefully..")
+
             return
 
 

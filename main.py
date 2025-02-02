@@ -22,10 +22,14 @@ class TJBot(Bot):
 
         # amount of messages that went through on_message
         self.index = 0
+
+        # ai related messages, powered by ollama
+        self.messages = {}
+
         # seconds since the setup hook starts
         self.seconds = 0
 
-        self.cmds_cogs = ["tcommands","util", "sapph", "fun", "quote", "dev"]
+        self.cmds_cogs = ["tcommands","util", "sapph", "fun", "quote", "ai", "dev"]
 
     async def setup_hook(self):
         self.m_activity.start()
