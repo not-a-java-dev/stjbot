@@ -1,4 +1,5 @@
 import base64
+import time
 import random
 import discord
 from discord import app_commands
@@ -30,6 +31,8 @@ class Quotes(commands.Cog):
         else:
             nick = base64.b64encode(message.author.display_name.encode()).decode()
 
+        if message.author.display_name == message.author.name:
+            nick = ""
 
         message_content = base64.b64encode(message.content.encode())
         message_parsed = f"{message.author.name}~{nick}~{message_content.decode()}"
@@ -51,6 +54,7 @@ class Quotes(commands.Cog):
 
         nick = f"({interaction.user.nick})" if isinstance(interaction.user, discord.Member) and interaction.user.nick != None else ""
         await interaction.response.send_message(f"-# {interaction.user.name}{nick}\n-# Random quote:\n{LOADING3} `Please wait... Searching logs...`")
+        time.sleep(0.2) # :troll:
 
         with open("t_mesg.txt", "r") as logs:
             try:

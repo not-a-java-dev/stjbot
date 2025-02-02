@@ -25,17 +25,17 @@ class TJBot(Bot):
         # seconds since the setup hook starts
         self.seconds = 0
 
-        self.cmds_cogs = ["tcommands","util", "sapph", "fun", "quote"]
+        self.cmds_cogs = ["tcommands","util", "sapph", "fun", "quote", "dev"]
 
     async def setup_hook(self):
         self.m_activity.start()
 
     async def on_ready(self):
-        client.logger.info("Ready.")
+        self.logger.info("Ready.")
 
-        for cog in client.cmds_cogs:
-            client.logger.debug(f"cmds.{cog} loaded")
-            await client.load_extension(f"cmds.{cog}")
+        for cog in self.cmds_cogs:
+            self.logger.debug(f"cmds.{cog} loaded")
+            await self.load_extension(f"cmds.{cog}")
 
     @tasks.loop(seconds=1)
     async def m_activity(self):
